@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold and Silver Rates - Sameer Jewellers & Al Akram Casting Works</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 25px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            border: 3px solid #ff9800;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+        }
+        .container:before, .container:after {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            z-index: -1;
+            border-radius: 15px;
+            border: 3px solid #ffb84d;
+        }
+        .shop-name {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #ffffff;
+            background: linear-gradient(45deg, #ff9800, #ffb84d);
+            padding: 15px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 1.5em;
+            color: #2980b9;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .result-container {
+            margin-top: 20px;
+        }
+        .date-style {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #8e44ad;
+            margin-bottom: 15px;
+        }
+        .rate-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        .rate-item {
+            background: #f7dc6f;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.3em;
+            color: #d35400;
+            font-weight: bold;
+            text-align: left;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        .rate-item.silver {
+            background: #2c3e50;
+            color: #ecf0f1;
+        }
+        .footer {
+            font-size: 1em;
+            color: #7f8c8d;
+            margin-top: 20px;
+        }
+        .contact-info {
+            font-size: 1.1em;
+            margin-top: 10px;
+            color: #16a085;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="shop-name">
+            Sameer Jewellers & Al Akram Casting Works
+        </div>
+
+        <h1>Proddatur Gold and Silver Rates</h1>
+
+        <div class="result-container">
+            <p class="date-style">Rates as of: <span id="dateDisplay"></span></p>
+
+            <div class="rate-box">
+                <div class="rate-item">Gold 24 Carats (per gram): ₹<span id="gold24Rate">0</span></div>
+                <div class="rate-item">Gold 22 Carats (per gram): ₹<span id="gold22Rate">0</span></div>
+                <div class="rate-item silver">Silver (per 10 grams): ₹<span id="silverRate">0</span></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Thank you for choosing Sameer Jewellers & Al Akram Casting Works
+        </div>
+
+        <div class="contact-info">
+            Contact Us: +91 99899 75755 | +91 91827 47920
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const gold24 = localStorage.getItem('gold24');
+            const gold22 = localStorage.getItem('gold22');
+            const silver = localStorage.getItem('silver');
+            const date = localStorage.getItem('date');
+
+            document.getElementById('gold24Rate').innerText = gold24;
+            document.getElementById('gold22Rate').innerText = gold22;
+            document.getElementById('silverRate').innerText = silver;
+            document.getElementById('dateDisplay').innerText = formatDate(date);
+        }
+
+        function formatDate(dateInput) {
+            const date = new Date(dateInput);
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            return date.toLocaleDateString('en-IN', options);
+        }
+    </script>
+
+</body>
+</html>
